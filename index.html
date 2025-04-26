@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 5 Stromsparer des Jahres 2025</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   
+    <style>
+      .status {
+            color: block;
+            font-size: 18px;
+            text-align: center;
+        }
+        .check-marks {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background-color: green;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            font-size: 16px;
+        }
+        .content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        .banner {
+            background-color: #d2d2d2;
+            color: #000000;
+            text-align: center;
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .product-ranking {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+  
+    .product-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
+      border: 1px solid #ddd;
+      box-shadow: 0 0 20px 1px rgb(84 84 84 / 30%);
+      margin-bottom: 30px;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+      position: relative;
+      box-sizing: border-box;
+    }
+    .product-best{
+      margin: 0;
+      padding: 20px;
+      background-color: #9b1717;
+      color: #FFFFFF;
+      text-align: center;
+      border-top-left-radius: 20px;  /* 左上角圆弧 */
+      border-top-right-radius: 20px; /* 右上角圆弧 */
+    }
+  
+    .first-place {
+      border: 4px solid #3bd11c; /* 第一名的边框颜色 */
+    }
+  
+    /* 排名序号 */
+    .ranking-number {
+      font-size: 24px;
+      font-weight: bold;
+      position: absolute;
+      top: -20px;
+      left: -10px;
+      color: #004cdd;
+      background-color: #fff; /* 圆圈的背景颜色 */
+      border-radius: 50%; /* 设置为圆形 */
+      width: 40px; /* 设置圆圈的宽度 */
+      height: 40px; /* 设置圆圈的高度 */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 3px solid #004cdd; /* 圆圈的边框 */
+    }
+  
+    /* 控制每个部分的占比 */
+    .product-section {
+      padding: 10px;
+      box-sizing: border-box;
+      border-right: 1px solid #ddd;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .product-section:last-child {
+      border-right: none; /* 移除最后一个部分的右边框 */
+    }
+  
+  .product-section:nth-child(2) {
+      flex: 0 0 20%; /* 设置product-image占比30% */
+  }
+  
+  .product-section:nth-child(3) {
+      flex: 1; /* 设置product-info占比余下的 */
+  }
+  
+  .product-section:nth-child(4) {
+      flex: 0 0 25%; /* 设置product-rating占比30% */
+  }
+  
+    .product-image {
+      
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto; /* 添加此行以确保图片居中对齐 */
+    }
+  
+    .product-image img {
+      width: 100%;
+      object-fit: cover;
+    }
+  
+    .product-info {
+      flex: 1; /* 让product-info占据剩余的可用空间 */
+      margin-left: 20px;
+      text-align: center;
+      padding: 10px; /* 添加内边距 */
+      box-sizing: border-box; /* 确保内边距和边框包含在高度和宽度内 */
+      height: 100%; /* 确保高度覆盖整个父容器 */
+    }
+  
+    .product-info::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 1px;
+      background-color: #ddd; /* 边框颜色 */
+    }
+  
+    .product-info h3 {
+      margin: 0 0 10px 0;
+      border-bottom: 1px solid #ddd;
+    }
+  
+    .product-description {
+      list-style-type: none;
+      padding: 0;
+      text-align: left;
+      column-count: 2; /* 设置为两列布局 */
+    }
+  
+    .product-description li {
+      display: flex;
+      padding: 5px; /* 添加内边距 */
+      margin-bottom: 5px; /* 添加底部外边距 */
+    }
+  
+    .checkmark {
+      color: green;
+      margin-right: 8px;
+    }
+  
+    .product-rating {
+     
+      margin-top: 20px;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+  
+    .stars i {
+      font-size: 18px;
+      color: #FFD700;
+      cursor: pointer;
+    }
+  
+    .stars i:hover {
+      color: #FFB700;
+    }
+  
+    .buy-button {
+      width: 90%;
+      padding: 15px 15px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.2); /* 添加阴影效果 */
+    }
+  
+    .buy-button:hover {
+      background-color: #45a049;
+    }
+  
+    /* 最好的标记 */
+    .best-label {
+      position: absolute;
+      top: 10px;
+      right: 2px;
+    }
+  
+    .best-label img {
+      height: 47px;
+      margin-top: -35px;
+    }
+  
+    .product-rating h1 {
+      margin: 0; /* 移除默认的上下间距 */
+      font-size: 60px;
+    }
+  
+    .product-rating p {
+      margin: 0; /* 设置 p 标签的上间距为 5px，去除下间距 */
+    }
+    .product-best.mobile-layout{
+    display: none;
+    }
+  
+    @media (max-width: 768px) {
+      .product-item {
+        display: none; /* 隐藏桌面端的布局 */
+      }
+      
+      .product-rating {
+        flex: 0 0 50%; /* 20% 占比 */
+        margin-top: 10px;
+        text-align: center;
+      }
+      .product-image {
+        flex: 0 0 50%; /* 20% 占比 */
+        border-right: 1px solid #ddd;
+      }
+      .mobile-layout {
+        display: block; /* 显示移动端的布局 */
+        border: 1px solid #ddd;
+        padding: 15px;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        position: relative;
+      }
+  
+      .mobile-image-rating {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        padding-bottom: 10px; /* 添加内边距 */
+      }
+  
+      .mobile-layout h3 {
+        text-align: center;
+        margin: 10px 0 10px 0;
+        padding-bottom: 10px; /* 添加内边距 */
+        border-bottom: 1px solid #ddd;
+      }
+  
+      .mobile-layout .product-description {
+        text-align: left;
+        margin-bottom: 10px;
+        column-count: 1;
+        padding-bottom: 10px; /* 添加内边距 */
+      }
+  
+      .mobile-layout .buy-button {
+        display: block;
+        width: 100%;
+      }
+  
+      .ranking-number {
+        font-size: 24px;
+        font-weight: bold;
+        position: absolute;
+        top: -20px;
+        left: -10px;
+        color: #004cdd;
+        background-color: #fff;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 3px solid #004cdd;
+      }
+      .product-description li {
+      padding: 1px; /* 添加内边距 */
+    }
+  
+      .best-label {
+        position: absolute;
+        top: 10px;
+        right: 2px;
+      }
+      .best-label img {
+        height: 30px;
+      }
+      .product-best{
+     display: none; 
+    }
+    .product-best.mobile-layout{
+      display: block;
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #9b1717;
+      color: #FFFFFF;
+      text-align: center;
+      border-top-left-radius: 10px;  /* 左上角圆弧 */
+      border-top-right-radius: 10px; /* 右上角圆弧 */
+      
+    }
+     
+    }
+    
+  
+    @media (min-width: 769px) {
+      .mobile-layout {
+        display: none; /* 隐藏移动端的布局 */
+      }
+    }
+  
+    .mobile-layout.first-place {
+      border: 4px solid #3bd11c; /* 应用第一名的边框颜色 */
+    }
+  
+    .content h2, .content h3 {
+        color: #2c3e50; /* 更改标题颜色为深蓝色 */
+    }
+    .content img {
+        display: block;
+        margin: -20px auto;
+        max-width: 100%;
+    }
+    .customer-reviews {
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-top: 40px;
+    }
+    .customer-reviews h3 {
+        text-align: center;
+        color: #2c3e50;
+        margin-bottom: 20px;
+    }
+    .review {
+        margin-bottom: 20px;
+        padding: 15px;
+        border-left: 4px solid #4CAF50;
+        background-color: #fff;
+        border-radius: 5px;
+    }
+    .review strong {
+        display: block;
+        margin-top: 10px;
+        color: #555;
+    }
+    /* Enhance modal style */
+    .modal-content {
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    .modal-header {
+        background-color: #4CAF50;
+        color: white;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+    .modal-footer {
+        border-top: none;
+    }
+    /* Enhance Results and Order sections */
+    h3 {
+        color: #4CAF50;
+        margin-top: 30px;
+    }
+    ol {
+        padding-left: 20px;
+        list-style-type: decimal;
+    }
+    ol li {
+        margin-bottom: 10px;
+    }
+    .results-section, .order-section {
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+    }
+    /* Center the modal on the screen */
+    .modal-dialog {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+    }
+    /* Ensure the close button works */
+    .close {
+        cursor: pointer;
+    }
+    /* Adjust modal to not cover the entire page */
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+        z-index: 1050;
+    }
+    .modal-dialog {
+        margin: 30px auto;
+    }
+    @media (max-width: 768px) {
+        .order-section {
+            padding: 10px; /* 减少内边距以适应小屏幕 */
+            font-size: 14px; /* 调整字体大小 */
+        }
+        .order-section ol {
+            padding-left: 15px; /* 减少列表的左边距 */
+        }
+        .order-section ol li {
+            margin-bottom: 8px; /* 减少列表项的底部外边距 */
+        }
+    }
+    .order-section {
+        max-width: 100%; /* 确保内容不超出屏幕宽度 */
+        overflow-x: auto; /* 允许水平滚动 */
+    }
+    .center-image {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .discount-tooltip {
+        position: absolute;
+        bottom: -50px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #fff8e1; /* 更改为柔和的黄色 */
+        color: #1900ff;
+        padding: 10px 15px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: bold;
+        white-space: nowrap;
+        z-index: 1000;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border: 2px dashed #ffcc00; /* 添加虚线边框 */
+    }
+    </style>
+</head>
+<body>
+    <!-- Remove Welcome Modal -->
+    <!-- Product 1 Modal -->
+    <div id="product1Modal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"> <i class="fa fa-clock-o" aria-hidden="true"></i> BEGRENZTE ZEIT</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Schließen">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="text-align: center;">
+                    <img src="style/akusoli.webp" alt="Nuubu" style="width:50%; margin-bottom: 15px;">
+                    <a href="click/1"><H1>Erhalten Sie heute 70% Rabatt!</H1></a>
+                    <p>Kaufen Sie jetzt Akusoli Magnetische Einlegesohlen und erhalten Sie 70% Rabatt auf den Originalpreis.</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="click/1" class="buy-button" style="text-align: center; width: 100%; box-shadow: 0 4px 4px 1px rgba(0, 0, 0, 0.8); position: relative;">HIER KLICKEN, UM JETZT ZU SPAREN <i class="fa fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="banner"><h1>Die 5 besten magnetischen Massage-Einlegesohlen im Jahr 2025</h1>
+          
+        </div>
+        <div class="status">
+          <span class="check-marks">&#10003;</span> Letzte Aktualisierung: <span id="currentDate"></span>
+      </div>
+      <br>
+        
+        <br>
+        <H2>Kennen Sie das?</H2>
+        <p>Schmerzende Füße nach einem langen Tag? Brennende Fersen, müde Beine und das Gefühl, als würden Ihre Schuhe Ihnen Energie rauben, statt sie zu geben?</p>
+        <p>Ob im Beruf, beim Einkaufen oder auf Reisen – wenn Ihre Füße nicht mitmachen, leidet der ganze Körper. Fußschmerzen führen oft zu Knie-, Rücken- und sogar Nackenschmerzen. Normale Gelsohlen helfen nur kurzfristig, verlieren schnell ihre Form – und am Ende sind Sie wieder am Anfang.</p>
+        <p>Doch 2025 gibt es eine neue Lösung: Magnetische Akupressur-Einlegesohlen. Sie kombinieren gezielte Massagepunkte mit therapeutischer Magnetkraft, um Schmerzen zu lindern, die Durchblutung zu fördern und Ihre Füße spürbar zu entlasten.</p>
+        <P>👉 Wenn Sie wieder schmerzfrei gehen möchten – dann ist dieser Ratgeber genau das Richtige für Sie.</P>
+        <p>Wir haben Dutzende der meistverkauften und meistdiskutierten Einlegesohlen auf dem Markt getestet und miteinander verglichen. Dabei haben wir Komfort, Unterstützung, Schmerzlinderung, Kundenzufriedenheit, Preis-Leistungs-Verhältnis und Haltbarkeit berücksichtigt. Am Ende haben wir die Top 5 Einlegesohlen des Jahres 2025 für Sie ausgewählt.</p>
+        <h4>Nach umfangreichen Tests sind wir zu den endgültigen Ergebnissen gekommen. Lesen Sie weiter, um herauszufinden, welche Magnetische Akupressur-Einlegesohlen herausragen.</h4>
+        <br>
+        <p style="text-align: center;"><strong>Wir setzen extrem hohe Teststandards für unsere Leser, damit Sie sich bei unseren Empfehlungen sicher fühlen können. Unser Ziel ist es, mehr Verbrauchern zu helfen, Geld und Zeit durch unser professionelles Expertenteam zu sparen.</strong></p>
+
+        <div class="product-ranking">
+          <span data-mce-type="bookmark" style="display: inline-block; width: 0px; overflow: hidden; line-height: 0;" class="mce_SELRES_start">﻿</span>
+          <!-- 排行框 --> 
+          <div class="product-item first-place">
+           <!-- 排名序号 --> 
+           <div class="ranking-number">
+            #1
+           </div> 
+           <!-- 产品图片 --> 
+           <div class="product-section"> 
+            <div class="product-image">
+             <img src="style/akusoli.webp" alt="产品1" />
+            </div> 
+           </div> 
+           <!-- 产品信息：标题和描述 --> 
+           <div class="product-section"> 
+            <div class="product-info"> 
+             <h3>Akusoli Magnetische Akupressur-Einlegesohlen</h3> 
+             <ul class="product-description"> 
+              <li><span class="checkmark">✅</span> Magnettherapie f&uuml;r nat&uuml;rliche Schmerzlinderung &amp; Energiefluss</li> 
+              <li><span class="checkmark">✅</span> Akupressur-Massage stimuliert Reflexzonen und l&ouml;st Spannungen</li> 
+              <li><span class="checkmark">✅</span> Anti-Erm&uuml;dungs-Wirkung: Ideal f&uuml;r lange Arbeitstage oder Reisen</li> 
+              <li><span class="checkmark">✅</span> Verhindert Fu&szlig;geruch dank atmungsaktiver, antibakterieller Oberfl&auml;che</li> 
+              <li><span class="checkmark">✅</span> Trim-to-Fit Design: Passt in fast jeden Schuh</li> 
+              <li><span class="checkmark">✅</span> Unterst&uuml;tzt Haltung &amp; Gleichgewicht – wirkt bis in R&uuml;cken &amp; Nacken</li> 
+              <li><span class="checkmark">✅</span> Langlebig &amp; robust – h&auml;lt bis zu 6 Monate bei t&auml;glichem Tragen</li> 
+              <li><span class="checkmark">✅</span> 30-Tage-Geld-zur&uuml;ck-Garantie – risikofreies Testen</li> 
+              <li><span class="checkmark" style="color: red;">❌</span> Oft ausverkauft aufgrund hoher Nachfrage</li> 
+              <li><span class="checkmark" style="color: red;">❌</span> 1–2 Tage Eingew&ouml;hnung – Akupressur erfordert etwas Anpassung</li> 
+             </ul> 
+            </div> 
+           </div> 
+           <!-- 评分与产品引导按钮 --> 
+           <div class="product-section"> 
+            <div class="product-rating"> 
+             <div class="stars"> 
+              <i class="fa fa-star"></i> 
+              <i class="fa fa-star"></i> 
+              <i class="fa fa-star"></i> 
+              <i class="fa fa-star"></i> 
+              <i class="fa fa-star-half-o"></i> 
+             </div> 
+             <h1>9.8</h1> 
+             <h2>Ausgezeichnet</h2> 
+             <small class="text-muted">Benutzerbewertungen (13,327)</small> 
+             <a style="text-decoration: none; width: 100%; position: relative;" href="click/1"> <button class="buy-button" style="box-shadow: 0 4px 4px 1px rgba(0, 0, 0, 0.8); position: relative;"> SEITE BESUCHEN<i class="fa fa-arrow-right"></i> <span class="discount-tooltip"> 70% Rabatt </span> </button> </a> 
+            </div> 
+           </div> 
+           <!-- 最好的标记 --> 
+           <div class="best-label">
+            <img src="style/limited-offer-smaller.png" alt="Best" />
+           </div> 
+          </div> 
+          <div class="product-item"> 
+           <div class="ranking-number">
+            #2
+           </div> 
+           <div class="product-section"> 
+            <div class="product-image">
+             <img src="style/Dr_Scholl.webp" alt="产品2" />
+            </div> 
+           </div> 
+           <div class="product-section"> 
+            <div class="product-info"> 
+             <h3>Dr. Scholl's Orthopädische Einlagen</h3> 
+             <ul class="product-description"> 
+              <li><span class="checkmark">✅</span> Bekannt &amp; vertrauensw&uuml;rdig</li> 
+              <li><span class="checkmark">✅</span> Gute D&auml;mpfung bei langem Stehen</li> 
+              <li><span class="checkmark">✅</span> Einfache Anpassung an Schuhgr&ouml;&szlig;e</li> 
+              <li><span class="checkmark">✅</span> Reduziert leichte Erm&uuml;dung</li> 
+              <li><span class="checkmark">✅</span> In vielen Gesch&auml;ften erh&auml;ltlich</li> 
+              <li><span class="checkmark" style="color: red;">❌</span> Sehr teuer f&uuml;r begrenzte Wirkung</li> 
+              <li><span class="checkmark" style="color: red;">❌</span> D&auml;mpfung l&auml;sst nach einigen Wochen nach</li> 
+              <li><span class="checkmark" style="color: red;">❌</span> Keine gezielte Massagefunktion</li> 
+             </ul> 
+            </div> 
+           </div> 
+           <div class="product-section"> 
+            <div class="product-rating"> 
+             <div class="stars"> 
+              <i class="fa fa-star"></i> 
+              <i class="fa fa-star"></i> 
+              <i class="fa fa-star"></i> 
+              <i class="fa fa-star"></i> 
+              <i class="fa fa-star-o"></i> 
+             </div> 
+             <h1>8.9</h1> 
+             <h2>Sehr gut</h2> 
+             <small class="text-muted">Benutzerbewertungen (8,765)</small> 
+             <button class="buy-button" style="box-shadow: 0 4px 4px 1px rgba(0, 0, 0, 0.8); position: relative;" onclick="window.location.href='click/2'">SEITE BESUCHEN<i class="fa fa-arrow-right"></i></button>
+            </div> 
+           </div> 
+          </div> 
+          <div class="product-item"> 
+           <div class="ranking-number">
+            #3
+           </div> 
+           <div class="product-section"> 
+            <div class="product-image">
+             <img src="style/FEELLIFE.webp" alt="产品3" />
+            </div> 
+           </div> 
+           <div class="product-section"> 
+            <div class="product-info"> 
+             <h3>FEELLIFE Fu&szlig;gew&ouml;lbe-Einlegesohlen</h3> 
+             <ul class="product-description"> 
+              <li><span class="checkmark">✅</span> Gute St&uuml;tze f&uuml;r das Fu&szlig;gew&ouml;lbe</li> 
+              <li><span class="checkmark">✅</span> Tiefe Fersenschale zur Ausrichtung</li> 
+              <li><span class="checkmark">✅</span> Stabil &amp; langlebig</li> 
+              <li><span class="checkmark">✅</span> Ordentliche Sto&szlig;absorption</li> 
+              <li><span class="checkmark">✅</span> Universelle Passform</li> 
+              <li><span class="checkmark" style="color: red;">❌</span> Etwas hart – nichts f&uuml;r sensible F&uuml;&szlig;e</li> 
+              <li><span class="checkmark" style="color: red;">❌</span> Keine Massagefunktion</li> 
+              <li><span class="checkmark" style="color: red;">❌</span> Keine Geruchsvermeidung</li> 
+             </ul> 
+            </div> 
+           </div> 
+           <div class="product-section"> 
+            <div class="product-rating"> 
+             <div class="stars"> 
+              <i class="fa fa-star"></i> 
+              <i class="fa fa-star"></i> 
+              <i class="fa fa-star"></i> 
+              <i class="fa fa-star-half-o"></i> 
+              <i class="fa fa-star-o"></i> 
+             </div> 
+             <h1>8.5</h1> 
+             <h2>Gut</h2> 
+             <small class="text-muted">Benutzerbewertungen (5,432)</small> 
+             <button class="buy-button" style="box-shadow: 0 4px 4px 1px rgba(0, 0, 0, 0.8); position: relative;" onclick="window.location.href='click/3'">SEITE BESUCHEN<i class="fa fa-arrow-right"></i></button>
+            </div> 
+           </div> 
+          </div> 
+          <div class="product-item"> 
+           <div class="ranking-number">
+            #4
+           </div> 
+           <div class="product-section"> 
+            <div class="product-image">
+             <img src="style/EasyFeet.webp" alt="产品4" />
+            </div> 
+           </div> 
+           <div class="product-section"> 
+            <div class="product-info"> 
+             <h3>EasyFeet Anti-Ermüdungs-Einlegesohlen</h3> 
+             <ul class="product-description"> 
+              <li><span class="checkmark">✅</span> G&uuml;nstiger Preis</li> 
+              <li><span class="checkmark">✅</span> Fokus auf Bogenst&uuml;tze</li> 
+              <li><span class="checkmark">✅</span> Atmungsaktives Material</li> 
+              <li><span class="checkmark">✅</span> Gel-Polsterung im Vorfu&szlig;</li> 
+              <li><span class="checkmark">✅</span> Zuschneidbar</li> 
+              <li><span class="checkmark" style="color: red;">❌</span> Tr&auml;gt sich schneller ab</li> 
+              <li><span class="checkmark" style="color: red;">❌</span> Weniger stabil bei t&auml;glichem Tragen</li> 
+              <li><span class="checkmark" style="color: red;">❌</span> Keine therapeutischen Funktionen</li> 
+             </ul> 
+            </div> 
+           </div> 
+           <div class="product-section"> 
+            <div class="product-rating"> 
+             <div class="stars"> 
+              <i class="fa fa-star"></i> 
+              <i class="fa fa-star"></i> 
+              <i class="fa fa-star-half-o"></i> 
+              <i class="fa fa-star-o"></i> 
+              <i class="fa fa-star-o"></i> 
+             </div> 
+             <h1>7.8</h1> 
+             <h2>Durchschnittlich</h2> 
+             <small class="text-muted">Benutzerbewertungen (4,321)</small> 
+             <button class="buy-button" style="box-shadow: 0 4px 4px 1px rgba(0, 0, 0, 0.8); position: relative;" onclick="window.location.href='click/4'">SEITE BESUCHEN<i class="fa fa-arrow-right"></i></button>
+            </div> 
+           </div> 
+          </div> 
+          <div class="product-item"> 
+           <div class="ranking-number">
+            #5
+           </div> 
+           <div class="product-section"> 
+            <div class="product-image">
+             <img src="style/Walk.webp" alt="产品5" />
+            </div> 
+           </div> 
+           <div class="product-section"> 
+            <div class="product-info"> 
+             <h3>Sole max Orthopädische Einlagen</h3> 
+             <ul class="product-description"> 
+              <li><span class="checkmark">✅</span> Sehr g&uuml;nstig</li> 
+              <li><span class="checkmark">✅</span> Weiches Tragegef&uuml;hl</li> 
+              <li><span class="checkmark">✅</span> Leicht &amp; flexibel</li> 
+              <li><span class="checkmark">✅</span> L&uuml;ftungsl&ouml;cher gegen Schwei&szlig;</li> 
+              <li><span class="checkmark">✅</span> Ideal f&uuml;r kurze Spazierg&auml;nge</li> 
+              <li><span class="checkmark" style="color: red;">❌</span> Kaum Unterst&uuml;tzung bei Schmerzen</li> 
+              <li><span class="checkmark" style="color: red;">❌</span> Verformt sich schnell</li> 
+              <li><span class="checkmark" style="color: red;">❌</span> Nicht f&uuml;r lange Laufzeiten geeignet</li> 
+             </ul> 
+            </div> 
+           </div> 
+           <div class="product-section"> 
+            <div class="product-rating"> 
+             <div class="stars"> 
+              <i class="fa fa-star"></i> 
+              <i class="fa fa-star"></i> 
+              <i class="fa fa-star-half-o"></i> 
+              <i class="fa fa-star-o"></i> 
+              <i class="fa fa-star-o"></i> 
+             </div> 
+             <h1>7.1</h1> 
+             <h2>Durchschnittlich</h2> 
+             <small class="text-muted">Benutzerbewertungen (3,210)</small> 
+             <button class="buy-button" style="box-shadow: 0 4px 4px 1px rgba(0, 0, 0, 0.8); position: relative;" onclick="window.location.href='click/5'">SEITE BESUCHEN<i class="fa fa-arrow-right"></i></button>
+            </div> 
+           </div> 
+          </div> 
+          <!-- 产品1重复引导 --> 
+          <div class="product-best mobile-layout">
+           Bester Gesamtsieger
+          </div> 
+          <div class="product-item mobile-layout first-place"> 
+           <div class="ranking-number">
+            #1
+           </div> 
+           <h3>Akusoli Magnetische Akupressur-Einlegesohlen</h3> 
+           <div class="mobile-image-rating"> 
+            <div class="product-image">
+             <img src="style/akusoli.webp" alt="产品1" />
+            </div> 
+            <div class="product-rating"> 
+             <div class="stars"> 
+              <i class="fa fa-star"></i> 
+              <i class="fa fa-star"></i> 
+              <i class="fa fa-star"></i> 
+              <i class="fa fa-star"></i> 
+              <i class="fa fa-star-half-o"></i> 
+             </div> 
+             <h1>9.8</h1> 
+             <h2 style="font-size: 22px;">Ausgezeichnet</h2> 
+             <small class="text-muted">Benutzerbewertungen (13,327)</small> 
+            </div> 
+           </div> 
+           <ul class="product-description"> 
+            <li><span class="checkmark">✅</span> Magnettherapie f&uuml;r nat&uuml;rliche Schmerzlinderung &amp; Energiefluss</li> 
+            <li><span class="checkmark">✅</span> Akupressur-Massage stimuliert Reflexzonen und l&ouml;st Spannungen</li> 
+            <li><span class="checkmark">✅</span> Anti-Erm&uuml;dungs-Wirkung: Ideal f&uuml;r lange Arbeitstage oder Reisen</li> 
+            <li><span class="checkmark">✅</span> Verhindert Fu&szlig;geruch dank atmungsaktiver, antibakterieller Oberfl&auml;che</li> 
+            <li><span class="checkmark">✅</span> Trim-to-Fit Design: Passt in fast jeden Schuh</li> 
+            <li><span class="checkmark">✅</span> Unterst&uuml;tzt Haltung &amp; Gleichgewicht – wirkt bis in R&uuml;cken &amp; Nacken</li> 
+            <li><span class="checkmark">✅</span> Langlebig &amp; robust – h&auml;lt bis zu 6 Monate bei t&auml;glichem Tragen</li> 
+            <li><span class="checkmark">✅</span> 30-Tage-Geld-zur&uuml;ck-Garantie – risikofreies Testen</li> 
+            <li><span class="checkmark" style="color: red;">❌</span> Oft ausverkauft aufgrund hoher Nachfrage</li> 
+            <li><span class="checkmark" style="color: red;">❌</span> 1–2 Tage Eingew&ouml;hnung – Akupressur erfordert etwas Anpassung</li> 
+           </ul> 
+           <a style="text-decoration: none; width: 100%; position: relative;" href="click/1"> <button class="buy-button" style="box-shadow: 0 4px 4px 1px rgba(0, 0, 0, 0.8); position: relative;"> SEITE BESUCHEN<i class="fa fa-arrow-right"></i><span class="discount-tooltip"> 70% Rabatt </span></button> </a> 
+           <div class="best-label">
+            <img src="style/limited-offer-smaller.png" alt="Best" />
+           </div> 
+          </div> 
+          <div class="product-item mobile-layout"> 
+           <div class="ranking-number">
+            #2
+           </div> 
+           <h3>Dr. Scholl's Orthopädische Einlagen</h3> 
+           <div class="mobile-image-rating"> 
+            <div class="product-image">
+             <img src="style/Dr_Scholl.webp" alt="产品2" />
+            </div> 
+            <div class="product-rating"> 
+             <div class="stars"> 
+              <i class="fa fa-star"></i> 
+              <i class="fa fa-star"></i> 
+              <i class="fa fa-star"></i> 
+              <i class="fa fa-star"></i> 
+              <i class="fa fa-star-o"></i> 
+             </div> 
+             <h1>8.9</h1> 
+             <h2 style="font-size: 22px;">Sehr gut</h2> 
+             <small class="text-muted">Benutzerbewertungen (8,765)</small> 
+            </div> 
+           </div> 
+           <ul class="product-description"> 
+            <li><span class="checkmark">✅</span> Bekannt &amp; vertrauensw&uuml;rdig</li> 
+            <li><span class="checkmark">✅</span> Gute D&auml;mpfung bei langem Stehen</li> 
+            <li><span class="checkmark">✅</span> Einfache Anpassung an Schuhgr&ouml;&szlig;e</li> 
+            <li><span class="checkmark">✅</span> Reduziert leichte Erm&uuml;dung</li> 
+            <li><span class="checkmark">✅</span> In vielen Gesch&auml;ften erh&auml;ltlich</li> 
+            <li><span class="checkmark" style="color: red;">❌</span> Sehr teuer f&uuml;r begrenzte Wirkung</li> 
+            <li><span class="checkmark" style="color: red;">❌</span> D&auml;mpfung l&auml;sst nach einigen Wochen nach</li> 
+            <li><span class="checkmark" style="color: red;">❌</span> Keine gezielte Massagefunktion</li> 
+           </ul> 
+           <button class="buy-button" style="box-shadow: 0 4px 4px 1px rgba(0, 0, 0, 0.8); position: relative;" onclick="window.location.href='click/2'">SEITE BESUCHEN<i class="fa fa-arrow-right"></i></button>
+          </div> 
+          <div class="product-item mobile-layout"> 
+           <div class="ranking-number">
+            #3
+           </div> 
+           <h3>FEELLIFE Fu&szlig;gew&ouml;lbe-Einlegesohlen</h3> 
+           <div class="mobile-image-rating"> 
+            <div class="product-image">
+             <img src="style/FEELLIFE.webp" alt="产品3" />
+            </div> 
+            <div class="product-rating"> 
+             <div class="stars"> 
+              <i class="fa fa-star"></i> 
+              <i class="fa fa-star"></i> 
+              <i class="fa fa-star"></i> 
+              <i class="fa fa-star-half-o"></i> 
+              <i class="fa fa-star-o"></i> 
+             </div> 
+             <h1>8.5</h1> 
+             <h2 style="font-size: 22px;">Gut</h2> 
+             <small class="text-muted">Benutzerbewertungen (5,432)</small> 
+            </div> 
+           </div> 
+           <ul class="product-description"> 
+            <li><span class="checkmark">✅</span> Gute St&uuml;tze f&uuml;r das Fu&szlig;gew&ouml;lbe</li> 
+            <li><span class="checkmark">✅</span> Tiefe Fersenschale zur Ausrichtung</li> 
+            <li><span class="checkmark">✅</span> Stabil &amp; langlebig</li> 
+            <li><span class="checkmark">✅</span> Ordentliche Sto&szlig;absorption</li> 
+            <li><span class="checkmark">✅</span> Universelle Passform</li> 
+            <li><span class="checkmark" style="color: red;">❌</span> Etwas hart – nichts f&uuml;r sensible F&uuml;&szlig;e</li> 
+            <li><span class="checkmark" style="color: red;">❌</span> Keine Massagefunktion</li> 
+            <li><span class="checkmark" style="color: red;">❌</span> Keine Geruchsvermeidung</li> 
+           </ul> 
+           <button class="buy-button" style="box-shadow: 0 4px 4px 1px rgba(0, 0, 0, 0.8); position: relative;" onclick="window.location.href='click/3'">SEITE BESUCHEN<i class="fa fa-arrow-right"></i></button>
+          </div> 
+          <div class="product-item mobile-layout"> 
+           <div class="ranking-number">
+            #4
+           </div> 
+           <h3>EasyFeet Anti-Ermüdungs-Einlegesohlen</h3> 
+           <div class="mobile-image-rating"> 
+            <div class="product-image">
+             <img src="style/EasyFeet.webp" alt="产品4" />
+            </div> 
+            <div class="product-rating"> 
+             <div class="stars"> 
+              <i class="fa fa-star"></i> 
+              <i class="fa fa-star"></i> 
+              <i class="fa fa-star-half-o"></i> 
+              <i class="fa fa-star-o"></i> 
+              <i class="fa fa-star-o"></i> 
+             </div> 
+             <h1>7.8</h1> 
+             <h2 style="font-size: 22px;">Durchschnittlich</h2> 
+             <small class="text-muted">Benutzerbewertungen (4,321)</small> 
+            </div> 
+           </div> 
+           <ul class="product-description"> 
+            <li><span class="checkmark">✅</span> G&uuml;nstiger Preis</li> 
+            <li><span class="checkmark">✅</span> Fokus auf Bogenst&uuml;tze</li> 
+            <li><span class="checkmark">✅</span> Atmungsaktives Material</li> 
+            <li><span class="checkmark">✅</span> Gel-Polsterung im Vorfu&szlig;</li> 
+            <li><span class="checkmark">✅</span> Zuschneidbar</li> 
+            <li><span class="checkmark" style="color: red;">❌</span> Tr&auml;gt sich schneller ab</li> 
+            <li><span class="checkmark" style="color: red;">❌</span> Weniger stabil bei t&auml;glichem Tragen</li> 
+            <li><span class="checkmark" style="color: red;">❌</span> Keine therapeutischen Funktionen</li> 
+           </ul> 
+           <button class="buy-button" style="box-shadow: 0 4px 4px 1px rgba(0, 0, 0, 0.8); position: relative;" onclick="window.location.href='click/4'">SEITE BESUCHEN<i class="fa fa-arrow-right"></i></button>
+          </div> 
+          <div class="product-item mobile-layout"> 
+           <div class="ranking-number">
+            #5
+           </div> 
+           <h3>Sole max Orthopädische Einlagen</h3> 
+           <div class="mobile-image-rating"> 
+            <div class="product-image">
+             <img src="style/Walk.webp" alt="产品5" />
+            </div> 
+            <div class="product-rating"> 
+             <div class="stars"> 
+              <i class="fa fa-star"></i> 
+              <i class="fa fa-star"></i> 
+              <i class="fa fa-star-half-o"></i> 
+              <i class="fa fa-star-o"></i> 
+              <i class="fa fa-star-o"></i> 
+             </div> 
+             <h1>7.1</h1> 
+             <h2 style="font-size: 22px;">Durchschnittlich</h2> 
+             <small class="text-muted">Benutzerbewertungen (3,210)</small> 
+            </div> 
+           </div> 
+           <ul class="product-description"> 
+            <li><span class="checkmark">✅</span> Sehr g&uuml;nstig</li> 
+            <li><span class="checkmark">✅</span> Weiches Tragegef&uuml;hl</li> 
+            <li><span class="checkmark">✅</span> Leicht &amp; flexibel</li> 
+            <li><span class="checkmark">✅</span> L&uuml;ftungsl&ouml;cher gegen Schwei&szlig;</li> 
+            <li><span class="checkmark">✅</span> Ideal f&uuml;r kurze Spazierg&auml;nge</li> 
+            <li><span class="checkmark" style="color: red;">❌</span> Kaum Unterst&uuml;tzung bei Schmerzen</li> 
+            <li><span class="checkmark" style="color: red;">❌</span> Verformt sich schnell</li> 
+            <li><span class="checkmark" style="color: red;">❌</span> Nicht f&uuml;r lange Laufzeiten geeignet</li> 
+           </ul> 
+           <button class="buy-button" style="box-shadow: 0 4px 4px 1px rgba(0, 0, 0, 0.8); position: relative;" onclick="window.location.href='click/5'">SEITE BESUCHEN<i class="fa fa-arrow-right"></i></button>
+          </div> 
+        </div> 
+          
+
+        <h2>Wir haben die beliebtesten magnetischen Einlegesohlen gekauft und getestet – darum ist Akusoli unsere Nr. 1:</h2>
+        <p>Geschrieben von Emily Roberts – Aktualisiert am 16. April 2025</p>
+        <p>Nach intensiven Tests und einem Vergleich der meistverkauften Einlagen hat sich Akusoli deutlich von allen anderen Produkten abgehoben. Keine andere Einlegesohle kombinierte so effektiv Magnetkraft, Akupressur und Geruchsschutz – und das spürbar schon nach wenigen Stunden Tragezeit.</p>
+        <br>
+        <img src="style/10-2.webp" style="width: 80%;" alt="产品" />
+        <br>
+        <h3>📌 Häufige Fragen zu Akusoli</h3>
+        <div class="results-section">
+          <ol>
+              <li><strong>Q: Ist die Magnetkraft wirklich sicher?</strong><br>A: Ja. Akusoli verwendet sanfte, gesundheitlich unbedenkliche Magnetfelder, die in vielen Ländern therapeutisch anerkannt sind.</li>
+              <li><strong>Q: Kann ich Akusoli im Alltag tragen?</strong><br>A: Absolut! Ob im Büro, beim Spaziergang oder im Fitnessstudio – sie sind für den täglichen Gebrauch konzipiert.</li>
+              <li><strong>Q: Passen die Sohlen in jeden Schuh?</strong><br>A: Ja – einfach zuschneiden und einsetzen. Sie sind extra dünn für mehr Flexibilität.</li>
+              <li><strong>Q: Wie schnell spürt man eine Wirkung?</strong><br>A: Viele berichten von spürbarer Entlastung innerhalb der ersten Tage.</li>
+          </ol>
+
+      </div>
+        <p><button class="buy-button" style="box-shadow: 0 4px 4px 1px rgba(0, 0, 0, 0.8); position: relative;" onclick="window.location.href='../audetox/click'">Besuchen Sie den offiziellen Nuubu-Shop und sichern Sie sich 70% Rabatt</button></p>
+        <br>
+        <h3>✅ So einfach geht’s:</h3>
+        
+        <div class="results-section">
+            <ol>
+                <li><strong>Besuchen Sie die offizielle Website</strong>– dort gibt’s oft bis zu 70 % Rabatt</li>
+                <li><strong>Wählen Sie Ihre Größe</strong>und bestellen Sie risikofrei</li>
+                <li><strong>Zuschneiden, einlegen, loslaufen</strong>– und die Wirkung erleben</li>
+            </ol>
+          <p>🎁 LIMITIERTE AKTION: Spare jetzt bis zu 70 % auf Akusoli</p>  
+        </div>
+        <img src="style/9-1.webp" style="width: 80%;" alt="产品" />
+        <br>
+        
+        <br>
+        <button class="buy-button" style="box-shadow: 0 4px 4px 1px rgba(0, 0, 0, 0.8); position: relative;" onclick="window.location.href='../audetox/click'">Besuchen Sie den offiziellen Nuubu-Shop und sichern Sie sich 70% Rabatt</button> 
+    </div>
+   
+  <footer style="background-color: #303030; padding: 20px; text-align: center; margin-top: 40px;">
+    <div style="display: inline-block;">
+        <a href="privacy.html" style="margin-right: 15px;">Datenschutzrichtlinie</a>
+        <a href="terms.html" style="margin-right: 15px;">Nutzungsbedingungen</a>
+        <a href="about.html" style="margin-right: 15px;">Über uns</a>
+        <a href="advertising.html" style="margin-right: 15px;">Werbung</a>
+
+        <p style="color:#a2a2a2; padding-top: 20px;" >
+          Diese Seite ist eine kostenlose Online-Ressource, die bestrebt ist, ihren Besuchern hilfreiche Inhalte und Vergleichsfunktionen anzubieten. Bitte beachten Sie, dass der Betreiber dieser Seite Werbekompensation von Unternehmen akzeptiert, die auf der Seite erscheinen, und dass diese Kompensation die Platzierung und Reihenfolge beeinflusst, in der die Unternehmen (und/oder ihre Produkte) präsentiert werden, und in einigen Fällen auch die Bewertung, die ihnen zugewiesen wird. Soweit Bewertungen auf dieser Seite erscheinen, wird diese Bewertung durch unsere subjektive Meinung bestimmt und basiert auf einer Methodik, die unsere Analyse des Marktanteils und des Rufs der Marke, die Konversionsraten jeder Marke, die an uns gezahlte Kompensation und das allgemeine Verbraucherinteresse aggregiert. Unternehmenslisten auf dieser Seite implizieren keine Befürwortung. Sofern nicht ausdrücklich in unseren Nutzungsbedingungen festgelegt, werden alle Zusicherungen und Gewährleistungen in Bezug auf die auf dieser Seite präsentierten Informationen abgelehnt. Die Informationen, einschließlich der Preise, die auf dieser Seite erscheinen, können jederzeit geändert werden.
+        </p>
+    </div>
+    <p style="margin-top: 10px; color: #a2a2a2;">Copyright © 2025 | Alle Rechte vorbehalten.</p>
+</footer>
+    <script>
+      $(document).ready(function() {
+          // Ensure product 1 modal shows after 5 seconds the first time
+          setTimeout(function() {
+              $('#product1Modal').modal('show');
+          }, 80000); 
+          // Ensure the close button works
+          $('.close').click(function() {
+              $('#product1Modal').modal('hide');
+          });
+      });
+  </script>
+  <script>
+    function updateDate() {
+        const date = new Date();
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const formattedDate = date.toLocaleDateString('en-US', options);
+        document.getElementById('currentDate').textContent = formattedDate;
+    }
+    updateDate();
+</script>
+<script>
+  // 解码函数，处理双重编码等问题
+  function safeDecode(value) {
+      try {
+          // 尝试双重解码
+          const once = decodeURIComponent(value);
+          const twice = decodeURIComponent(once);
+          return twice;
+      } catch (e) {
+          try {
+              // 如果双重解码失败，退回一次解码
+              return decodeURIComponent(value);
+          } catch (err) {
+              // 解码失败则返回原始值
+              return value;
+          }
+      }
+  }
+
+  // 获取 URL 参数并尝试多层解码
+  function getURLParameter(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      const rawValue = urlParams.get(name);
+      return rawValue ? safeDecode(rawValue) : null;
+  }
+
+  // 获取并处理参数
+  const utmTerm = getURLParameter('utm_term');
+  const gclid = getURLParameter('gclid');
+  const gbraid = getURLParameter('gbraid');
+
+  // 保存 utm_term
+  if (utmTerm) {
+      localStorage.setItem('utm_term', utmTerm);
+      console.log('UTM Term:', utmTerm);
+  }
+
+  // 保存 gclid，如果没有则保存 gbraid
+  if (gclid) {
+      localStorage.setItem('gclid', gclid);
+  } else if (gbraid) {
+      localStorage.setItem('gclid', gbraid);
+  }
+</script>
+    <!-- Default Statcounter code for 消费者评分
+https://latestconsumerreviews.com/ -->
+<script type="text/javascript">
+var sc_project=13113494; 
+var sc_invisible=1; 
+var sc_security="b099a71a"; 
+</script>
+<script type="text/javascript"
+src="https://www.statcounter.com/counter/counter.js"
+async></script>
+<noscript><div class="statcounter"><a title="web statistics"
+href="https://statcounter.com/" target="_blank"><img
+class="statcounter"
+src="https://c.statcounter.com/13113494/0/b099a71a/1/"
+alt="web statistics"
+referrerPolicy="no-referrer-when-downgrade"></a></div></noscript>
+<!-- End of Statcounter Code -->
+
+  <!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
