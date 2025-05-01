@@ -997,48 +997,50 @@
     updateDate();
 </script>
 <script>
-  // 解码函数，处理双重编码等问题
-  function safeDecode(value) {
-      try {
-          // 尝试双重解码
-          const once = decodeURIComponent(value);
-          const twice = decodeURIComponent(once);
-          return twice;
-      } catch (e) {
-          try {
-              // 如果双重解码失败，退回一次解码
-              return decodeURIComponent(value);
-          } catch (err) {
-              // 解码失败则返回原始值
-              return value;
-          }
-      }
-  }
+    function safeDecode(value) {
+        try {
+            return decodeURIComponent(decodeURIComponent(value));
+        } catch (e) {
+            try {
+                return decodeURIComponent(value);
+            } catch {
+                return value;
+            }
+        }
+    }
 
-  // 获取 URL 参数并尝试多层解码
-  function getURLParameter(name) {
-      const urlParams = new URLSearchParams(window.location.search);
-      const rawValue = urlParams.get(name);
-      return rawValue ? safeDecode(rawValue) : null;
-  }
+    function getURLParameter(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        const rawValue = urlParams.get(name);
+        return rawValue ? safeDecode(rawValue) : null;
+    }
 
-  // 获取并处理参数
-  const utmTerm = getURLParameter('utm_term');
-  const gclid = getURLParameter('gclid');
-  const gbraid = getURLParameter('gbraid');
+    // Snapchat ScCid
+    const scCid = getURLParameter('ScCid');
+    if (scCid) {
+        localStorage.setItem('sc_cid', scCid);
+        console.log('Saved ScCid:', scCid);
+    }
 
-  // 保存 utm_term
-  if (utmTerm) {
-      localStorage.setItem('utm_term', utmTerm);
-      console.log('UTM Term:', utmTerm);
-  }
+    // Facebook fbclid
+    const fbclid = getURLParameter('fbclid');
+    if (fbclid) {
+        localStorage.setItem('fbclid', fbclid);
+        console.log('Saved fbclid:', fbclid);
+    }
 
-  // 保存 gclid，如果没有则保存 gbraid
-  if (gclid) {
-      localStorage.setItem('gclid', gclid);
-  } else if (gbraid) {
-      localStorage.setItem('gclid', gbraid);
-  }
+    // Google Ads gclid
+    const gclid = getURLParameter('gclid');
+    if (gclid) {
+        localStorage.setItem('gclid', gclid);
+        console.log('Saved gclid:', gclid);
+    }
+
+    // utm_term
+    const utmTerm = getURLParameter('utm_term');
+    if (utmTerm) {
+        localStorage.setItem('utm_term', utmTerm);
+    }
 </script>
     <!-- Default Statcounter code for 消费者评分
 https://latestconsumerreviews.com/ -->
