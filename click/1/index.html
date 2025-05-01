@@ -1,37 +1,34 @@
-    <script>
-        (function () {
-            const urlParams = new URLSearchParams(window.location.search);
-            const gclid = urlParams.get('gclid') || localStorage.getItem('gclid');
-            const utmTerm = urlParams.get('utm_term') || localStorage.getItem('utm_term');
+<!-- 放在需要跳转的页面 -->
+<script>
+    (function () {
+        // 只读取 localStorage
+        const gclid = localStorage.getItem('gclid') || '0';
+        const fbclid = localStorage.getItem('fbclid') || '0';
+        const scCid = localStorage.getItem('sc_cid') || '0';
+        const utmTerm = localStorage.getItem('utm_term') || '0';
 
-            // 如果 URL 中没有参数但 localStorage 中有，刷新页面拼接参数
-            if (!urlParams.has('gclid') && !urlParams.has('utm_term') && (gclid || utmTerm)) {
-                const newParams = [];
-                if (gclid) newParams.push('gclid=' + encodeURIComponent(gclid));
-                if (utmTerm) newParams.push('utm_term=' + encodeURIComponent(utmTerm));
+        // 选择一个存在的 ID：gclid > fbclid > ScCid
+        const trackingId = gclid !== '0' ? gclid : fbclid !== '0' ? fbclid : scCid;
 
-                const newUrl = window.location.origin + window.location.pathname + '?' + newParams.join('&');
-                window.location.href = newUrl;
-                return;
-            }
+        const baseUrl = 'https://nmttrack.com/';
+        const params = new URLSearchParams({
+            a: '146518',
+            c: '393218',
+            co: '194328',
+            mt: '5',
+            s1: 'Google',
+            s2: 'XHD',
+            s3: 'AW-17028711680/YkwnCLnF-74aEICK9rc_',
+            s4: 'xiedian-de.pages.dev',
+            s5: trackingId || '0',
+            utm_term: utmTerm
+        });
 
-            // 一旦有参数（来自 URL 或 localStorage），执行跳转
-            if (gclid || utmTerm) {
-                const baseUrl = 'https://click-ecom.com/?a=146518&c=393218&co=194328&mt=5&s1=Google02&s2=XHD&s3=AW-17028711680/YkwnCLnF-74aEICK9rc_&s4=xiedian-de.pages.dev';
-                const redirectParams = [];
+        const finalUrl = baseUrl + '?' + params.toString();
 
-                if (gclid) {
-                    redirectParams.push('s5=' + encodeURIComponent(gclid));
-                    localStorage.setItem('gclid', gclid);
-                }
-
-                if (utmTerm) {
-                    redirectParams.push('utm_term=' + encodeURIComponent(utmTerm));
-                    localStorage.setItem('utm_term', utmTerm);
-                }
-
-                const redirectUrl = baseUrl + '&' + redirectParams.join('&');
-                window.location.href = redirectUrl;
-            }
-        })();
-    </script>
+        // 避免在目标域重复跳转
+        if (!window.location.href.includes('nmttrack.com')) {
+            window.location.href = finalUrl;
+        }
+    })();
+</script>
